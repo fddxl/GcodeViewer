@@ -48,20 +48,22 @@ Viewer.prototype.render = function () {
 }
 
 Viewer.prototype.loadMesh = function () {
-  var Gn = 10;  //Gコードの行数
-  var place = [];
-  var Gx,Gy,Gz;
-  for(var i=0 ; i<Gn ; i++){
-    Gx = (Math.sin(i)*20)/200;
+
+    //console.log(Gx,Gy,Gz);
+    //place.push(new THREE.Vector3(Gx,Gy,Gz));
+
+
+  /*for(var i=0 ; i<Gn ; i++){
+    Gx = (Math.sin(i)*20)/100;
     Gy = (Math.cos(i)*20)/200;
     Gz = (0+i)/20;
     //文字列から各座標を引っ張ってくる
     //var place[i] = [Gx,Gy,Gz];
     //place.push([Gx,Gy,Gz]);
     place.push(new THREE.Vector3(Gx,Gy,Gz));
-  };
-  console.log(place);
-  var material = new THREE.MeshPhongMaterial({color:0xaaaaaa, specular:0x111111, shininess:40});
+  };*/
+   //console.log(place);
+/*  var material = new THREE.MeshPhongMaterial({color:0xaaaaaa, specular:0x111111, shininess:40});
   var geometry = new THREE.Geometry();
  /*for(var i=0 ; i<Gn ; i++){
   geometry.vertices.push(
@@ -69,7 +71,7 @@ Viewer.prototype.loadMesh = function () {
     new THREE.Vector3(place[i][0], place[i][1], place[i][2]));
 
   };*/
-  geometry.vertices = place;
+  //geometry.vertices = place;
   /*geometry.vertices.push(
   new THREE.Vector3(0.1, 0.1, 0),
   new THREE.Vector3(0, 0.1, 0),
@@ -79,8 +81,8 @@ Viewer.prototype.loadMesh = function () {
 //geometry.faces.push(
 //    new THREE.Face3(0,1,2),
 //  );
-  var mesh = new THREE.Line(geometry,material);
-  this.scene.add(mesh);
+//  var mesh = new THREE.Line(geometry,material);
+//  this.scene.add(mesh);
 };
 
 Viewer.prototype.loadLine = function () {

@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="application.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
     <script src="three.js-r91/build/three.min.js" charset="utf-8"></script>
+    <script src="three.js-r91/examples/js/controls/OrbitControls.js" charset="utf-8"></script>
+    <script src="GcodeViewer.js" charset="utf-8"></script>
     <script src="three.js-r91/application.js" charset="utf-8"></script>
     <script src="three.js-r91/viewer.js" charset="utf-8"></script>
+
 
   </head>
   <body>
@@ -17,31 +20,9 @@
     </div>
   </div>
   <form name="test">
-    <input type="file" id="selfile"><br>
+    <input type="file" id="inputfile" onchange="ReadGcode(event)"><br>
     </form>
 
-    <script>
-    var reader = new FileReader();
-
-
-    var obj1 = document.getElementById("selfile");
-
-//ダイアログでファイルが選択された時
-    obj1.addEventListener("change",function(evt){
-
-    var file = evt.target.files;
-
-  //FileReaderの作成
-  //テキスト形式で読み込む
-  reader.readAsText(file[0]);
-
-  //読込終了後の処理
-  reader.onload = function(ev){
-    //テキストエリアに表示する
-    //console.log(reader.result);
-  }
-},false);
-</script>
 
   </body>
 </html>
