@@ -1,7 +1,7 @@
 var Viewer = function (elementId, modelName) {
 
-  this.cameraDistance = 1.0;
-  this.boxSize = 0.4418847653807891;
+  this.cameraDistance = 2.0;
+  this.boxSize = 1;
   this.container = document.getElementById(elementId);
 
   // Camera
@@ -41,6 +41,11 @@ Viewer.prototype.resize = function () {
   this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
   this.camera.updateProjectionMatrix();
   this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+};
+
+Viewer.prototype.savepng = function(){
+  var dataURL = this.renderer.domElement.toDataURL("image/png");
+  document.getElementById("ScreenShot").src = dataURL;
 };
 
 Viewer.prototype.render = function () {

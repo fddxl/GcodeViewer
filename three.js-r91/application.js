@@ -38,15 +38,28 @@ function ReadGcode(event){
 
   if(files[0]){
     reader.readAsText(files[0]);
-    document.getElementById("inputfile").value = '';
   }
 
 }
 
 
+
+
 function eventListeners() {
   $('#startInflation').on('click', function() {
     inflation = true;
+  });
+
+  $('#canvas-viewer').on('mouseover', function() {
+    controls.enabled = true;
+  });
+  $('#canvas-viewer').on('mouseout', function() {
+    controls.enabled = false;
+  });
+
+  $('#savepng').on('click', function() {
+    viewer.savepng();
+    //inflation = true;
   });
 
   $('#stopInflation').on('click', function() {
