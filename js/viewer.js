@@ -20,6 +20,9 @@ var Viewer = function (elementId, modelName) {
   this.loadLine();
   this.helpers();
 
+  //STLExporter
+  this.expoter = new THREE.STLExporter();
+
   // Lights
   this.scene.add(new THREE.HemisphereLight(0x443333, 0x111122));
   this.addShadowedLight(1, 1, 1, 0xdddddd, 0.5);
@@ -143,3 +146,9 @@ Viewer.prototype.cameraPosition = function (degT, degP) {
   this.camera.position.set(x, y, z);
   this.render();
 };
+
+Viewer.prototype.expoterSTL = function(){
+  var data = this.expoter.parse(this.scene);
+  var blob = new Blob([data],{type:"model/stl;charset=utf-8"});
+  saveAs(blob,'LinePrinted.stl');
+}

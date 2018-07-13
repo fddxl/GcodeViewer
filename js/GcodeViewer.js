@@ -5,18 +5,15 @@ var GcodeReader = function(){
 //ファイルの読み込み
 GcodeReader.prototype.Load = function(_Gcode,scene){
   var place = [];
-  console.log(_Gcode);
   var Gcode = _Gcode;
-  //Gcode.replace(/ /g,"");
   var Gx=0,Gy=0,Gz=0;
   var gyo = Gcode.split("\n");
-  console.log(gyo);
 
   for(var i=0;i<gyo.length;i++){
   var A = gyo[i].split(" ");
-  //console.log(A);
+
   var flagF = false;
-  var flahZ
+//  var flahZ
   for(var q=0;q<A.length;q++){
     if(A[q][0]=="E"){
       flag = true;
@@ -90,7 +87,7 @@ GcodeReader.prototype.Load = function(_Gcode,scene){
   var scale = Math.max.apply(null,scaleResize);
   console.log(scale);
   mesh.scale.set(1/scale,1/scale,1/scale);
-  mesh.position.set(0,-0.5,0);
+  mesh.position.set(0,-0.25,0);
   scene.add(mesh);
 
 
@@ -120,10 +117,21 @@ GcodeReader.prototype.Load = function(_Gcode,scene){
   //console.log(path.arcLengthDivisions);
   //console.log(place);
   //console.log(path);
-  var _geometry = new THREE.TubeGeometry( path,place.length-1, 0.001, 8, false );
+  var _geometry = new THREE.TubeGeometry( path,place.length-1, 0.001, 10, false );
   var _material = new THREE.MeshBasicMaterial( { color: 0x088A85 } );
   var _mesh = new THREE.Mesh( _geometry, _material );
   console.log(_mesh);
+
+  _mesh.geometry.computeBoundingBox();
+  var _scaleMesh = _mesh.geometry.boundingBox;
+  console.log(_scaleMesh);
+  var _scaleResize = [_scaleMesh.max.x - _scaleMesh.min.x , _scaleMesh.max.y - _scaleMesh.min.y , _scaleMesh.max.z - _scaleMesh.min.z];
+  console.log(_scaleResize);
+  var _scale = Math.max.apply(null,_scaleResize);
+  console.log(_scale);
+  _mesh.scale.set(1/_scale,1/_scale,1/_scale);
+  _mesh.position.set(0,-0.25,0);
+
   scene.add( _mesh );
   //console.log(count);
 

@@ -62,6 +62,11 @@ function eventListeners() {
     //inflation = true;
   });
 
+  $('#saveSTL').on('click', function() {
+    viewer.expoterSTL();
+    //inflation = true;
+  });
+
   $('#stopInflation').on('click', function() {
     inflation = false;
   });
