@@ -3,15 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>20180323</title>
-    <link rel="stylesheet" href="application.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
-    <script src="three.js-r91/build/three.min.js" charset="utf-8"></script>
-    <script src="three.js-r91/examples/js/controls/OrbitControls.js" charset="utf-8"></script>
-    <script src="GcodeViewer.js" charset="utf-8"></script>
-    <script src="three.js-r91/application.js" charset="utf-8"></script>
-    <script src="three.js-r91/viewer.js" charset="utf-8"></script>
-
-
+    <link rel="stylesheet" href="css/application.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js/3rdparty/three.min.js" charset="utf-8"></script>
+    <script src="js/3rdparty/OrbitControls.js" charset="utf-8"></script>
+    <script src="js/3rdparty/STLExporter.js" charset="utf-8"></script>
+    <script src="js/GcodeViewer.js" charset="utf-8"></script>
+    <script src="js/application.js" charset="utf-8"></script>
+    <script src="js/viewer.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="contents">
@@ -23,9 +22,6 @@
     <input type="file" id="inputfile" onchange="ReadGcode(event)"><br>
     </form>
     <input type="button" id="savepng"><br>
-
     <img src="" id="ScreenShot">
-
   </body>
-  <script src="three.js-r91/STLExporter.js" charset="utf-8"></script>
 </html>
