@@ -12,14 +12,14 @@ GcodeReader.prototype.Load = function(_Gcode,scene){
   for(var i=0;i<gyo.length;i++){
   var A = gyo[i].split(" ");
 
-  var flagF = false;
+/*  var flagF = false;
 //  var flahZ
   for(var q=0;q<A.length;q++){
     if(A[q][0]=="E"){
       flag = true;
       break;
     }
-  }
+  }*/
   if(A[0]=="G1"){
     for(var p=1;p<A.length;p++){
       if(A[p].slice(0,1)=="X"){
@@ -81,11 +81,11 @@ GcodeReader.prototype.Load = function(_Gcode,scene){
   var mesh = new THREE.Line(geometry,material);
   mesh.geometry.computeBoundingBox();
   var scaleMesh = mesh.geometry.boundingBox;
-  console.log(scaleMesh);
+  //console.log(scaleMesh);
   var scaleResize = [scaleMesh.max.x - scaleMesh.min.x , scaleMesh.max.y - scaleMesh.min.y , scaleMesh.max.z - scaleMesh.min.z];
-  console.log(scaleResize);
+  //console.log(scaleResize);
   var scale = Math.max.apply(null,scaleResize);
-  console.log(scale);
+  //console.log(scale);
   mesh.scale.set(1/scale,1/scale,1/scale);
   mesh.position.set(0,-0.25,0);
   scene.add(mesh);
@@ -111,24 +111,24 @@ GcodeReader.prototype.Load = function(_Gcode,scene){
   };
 
   var path = new Curve_();
-  console.log(path);
+  //console.log(path);
   path.arcLengthDivisions = place.length;
   path.updateArcLengths();
   //console.log(path.arcLengthDivisions);
   //console.log(place);
   //console.log(path);
-  var _geometry = new THREE.TubeGeometry( path,place.length-1, 0.001, 10, false );
+  var _geometry = new THREE.TubeGeometry( path,place.length-1, 0.001, 20, false );
   var _material = new THREE.MeshBasicMaterial( { color: 0x088A85 } );
   var _mesh = new THREE.Mesh( _geometry, _material );
-  console.log(_mesh);
+  //console.log(_mesh);
 
   _mesh.geometry.computeBoundingBox();
   var _scaleMesh = _mesh.geometry.boundingBox;
-  console.log(_scaleMesh);
+  //console.log(_scaleMesh);
   var _scaleResize = [_scaleMesh.max.x - _scaleMesh.min.x , _scaleMesh.max.y - _scaleMesh.min.y , _scaleMesh.max.z - _scaleMesh.min.z];
-  console.log(_scaleResize);
+  //console.log(_scaleResize);
   var _scale = Math.max.apply(null,_scaleResize);
-  console.log(_scale);
+  //console.log(_scale);
   _mesh.scale.set(1/_scale,1/_scale,1/_scale);
   _mesh.position.set(0,-0.25,0);
 
